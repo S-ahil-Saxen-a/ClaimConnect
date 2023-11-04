@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/insuranceDb.css" />
+    <link rel="icon" href="../src/imges/长.png" style="width: 30px" />
+  </head>
+  <body>
+    <!-- <div id="roomnav">
+      
+      <div id="mid">
+        <input type="search" placeholder="find policies by name/provider" />
+        <i class="ri-search-line"></i>
+      </div>
+      <div id="right">
+        <a href=""><i class="ri-home-fill"></i></a>
+        <a href=""><i class="ri-bookmark-3-fill"></i></a>
+        <a href=""><i class="ri-map-pin-fill"></i></a>
+        
+      </div>
+    </div> -->
+
+    <div id="maindiv">
+      <div id="sidenav">
+        <h3>Star Health Inc.</h3>
+        <div id="dashboard">
+          <p id="head">DASHBOARD</p>
+          <a href="/index.html">
+            <div class="dashboarditems" id="home">
+              <i class="ri-home-5-line icons"></i>
+              <p class="entries">Home</p>
+            </div>
+          </a>
+          <a href="#">
+            <div class="dashboarditems active" id="app">
+              <i class="ri-health-book-line"></i>
+              <p class="entries">Claim Request</p>
+            </div>
+          </a>
+          <a href="#">
+            <div class="dashboarditems" id="pat">
+              <i class="ri-empathize-line"></i>
+              <p class="entries">Clients</p>
+            </div>
+          </a>
+          <a href="#">
+            <div class="dashboarditems" id="pr">
+              <i class="ri-exchange-funds-line"></i>
+              <p class="entries">Request History</p>
+            </div>
+          </a>
+          <!-- <div id="banner"> -->
+          <!-- <div id="text">
+                <p>Let's upgrade your plan</p>
+                <i class="ri-arrow-right-s-line"></i>
+            </div>
+            <img src="/3.png" alt=""> -->
+          <a class="card1" href="#">
+            <p>Let's upgrade your plan</p>
+            <img src="/images/12083074_Wavy_Bus-03_Single-06.png" alt="" />
+            <div class="go-corner" href="#">
+              <div class="go-arrow"><i class="ri-arrow-right-s-line"></i></div>
+            </div>
+          </a>
+          <!-- </div> -->
+        </div>
+      </div>
+      <div id="midsection" class="claimdes">
+        <div id="roomnav">
+          <div id="left">
+            <h3>Recent Claim Requests</h3>
+            <p>sorted in order of arrival</p>
+          </div>
+          <div id="mid">
+            <!-- <p>Search By</p> -->
+            <input type="search" placeholder="medical IDs, or number" />
+            <i class="ri-search-line"></i>
+          </div>
+          <!-- <div id="right">
+            <a href=""><i class="ri-home-fill"></i></a>
+            <a href=""><i class="ri-bookmark-3-fill"></i></a>
+            <a href=""><i class="ri-map-pin-fill"></i></a>
+          </div> -->
+        </div>
+        <div id="notifdiv">
+          <div id="upper">
+            <i class="ri-hospital-line"></i>
+            <h3>_Hospital Name</h3>
+          </div>
+          <!-- <div id="details">
+        <div id="from">
+          <p>From:</p>
+          <div class="det">
+            <h4>_Hospital Name</h4>
+          </div>
+        </div>
+        <div id="to">
+          <p>To:</p>
+          <div class="det">
+            <h4>_Insurance Company</h4>
+          </div>
+        </div>
+      </div> -->
+          <div id="claimhead">
+            <h3>Claim Id</h3>
+            <span>319384</span>
+          </div>
+          <section class="container">
+            <!-- Header Bar -->
+            <!-- <header>
+              <div class="button-col">
+                <button class="btn" name="Add Task">Add Task</button>
+              </div>
+
+              <div class="status-col">
+                <label> Status </label>
+              </div>
+
+              <div class="progress-col">
+                <label> Progress </label>
+              </div>
+
+              <div class="dates-col">
+                <label> Dates </label>
+              </div>
+
+              <div class="priority-col">
+                <label> Priority </label>
+              </div>
+
+              <div class="icon-col">
+                <i class="icon fa fa-user-o"> </i>
+              </div>
+            </header> -->
+
+            <!-- List Items -->
+            <ul class="task-items">
+              <!-- List Item -->
+              <% if(allClaims){ %> <% allClaims.forEach(function(claim){ %>
+              <li class="item type1">
+                <div class="task">
+                  <div class="name"><%= claim.title %></div>
+                  <p><%= claim.details %></p>
+                </div>
+
+                <div class="des">
+                  <div class="amount">
+                    <div class="bar"><%= claim.amount %> Rs./-</div>
+                  </div>
+
+                  <div class="status">
+                    <div class="icon warning"></div>
+                    <div class="text">Pending</div>
+                  </div>
+
+                  <!-- <div class="progress">
+                          <progress value="15" max="100" />
+                        </div> -->
+
+                  <div class="dates">
+                    <div class="bar">23 Aug 2022</div>
+                  </div>
+
+                  <div class="priority">
+                    <button
+                      onclick='window.location="/insuranceDb_clm/approve/<%=claim.id%>"'
+                      class="aprv"
+                    >
+                      Approve
+                    </button>
+                    <!-- <div class="bar">ismai kuch hoga</div> -->
+                  </div>
+                  <div class="priority">
+                    <button
+                      onclick='setCurrClaimId("<%=claim.id%>")'
+                      class="rvrt"
+                    >
+                      Revert
+                    </button>
+                    <!-- <div class="bar">ismai kuch hoga</div> -->
+                  </div>
+
+                  <!-- <div class="user">
+                          <img
+                            src="https://source.unsplash.com/40x40/?indian"
+                            alt="Image 001"
+                            class="owner-img"
+                          />
+                        </div> -->
+                </div>
+              </li>
+              <% }) %> <% } %>
+            </ul>
+          </section>
+          <div id="claimamt">
+            <h4 id="blck">Total Expenses</h4>
+            <div id="amt">
+              <h4><%= totalAmt %></h4>
+              <span>Rs. /-</span>
+            </div>
+            <div id="inwords"></div>
+          </div>
+          <div id="bottom">
+            <!-- <button class="button-57" role="button" id="cancel">
+              <span class="text"><i class="ri-close-line"></i></span>
+              <span
+                >Cancel Claim <br />
+                Req.</span
+              >
+            </button> -->
+            <!-- <div id="none">
+              <button class="button-57" role="button" id="revert">
+                <span class="text"
+                  ><i class="ri-arrow-go-forward-line"></i
+                ></span>
+                <span
+                  >Revert Claim <br />
+                  Req.</span
+                >
+              </button>
+            </div>
+            <button class="button-57" role="button" id="accept">
+              <span class="text"><i class="ri-check-line"></i></span>
+              <span
+                >Proceed Claim <br />
+                Req.</span
+              >
+            </button> -->
+          </div>
+        </div>
+      </div>
+      <div id="profilesection">
+        <div class="showdiv">
+          <p>Patient</p>
+          <i class="ri-arrow-right-s-line blue"></i>
+          <p class="blue">Patient Profile</p>
+        </div>
+        <div id="card">
+          <p class="grey">YOUR INSURANCE CLIENT</p>
+          <img
+            src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1680213087~exp=1680213687~hmac=895ba1207267b51fd1e7fe150f44d77fab0d736f3028d783a40edc6059711da1"
+            alt=""
+          />
+          <div id="det">
+            <div id="prf">
+              <h3>_Sahil Saxena</h3>
+              <p class="grey">_21 years old, _Male</p>
+              <p class="grey">_sahilsaxena9450@gmail.com</p>
+            </div>
+            <h4>_12002453</h4>
+            <div class="mini">
+              <p>Status:</p>
+              <span><i class="ri-check-line"></i>Claim Active</span>
+            </div>
+            <div class="mini">
+              <p>Policy:</p>
+              <span id="orng">_9 Lacs / year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="reasondiv">
+      <h4>Explain why you reverting this claim</h4>
+      <!-- <form id="revertForm" method="post" action=""> -->
+      <textarea
+        name="reason"
+        id="reason"
+        cols="20"
+        rows="2"
+        placeholder="reason here"
+      ></textarea>
+      <!-- </form> -->
+      <div class="btns">
+        <button onclick="toggler()" class="button-57" role="button" id="cancel">
+          <span class="text"><i class="ri-close-line"></i></span>
+          <span>Cancel</span>
+        </button>
+        <button
+          onclick="revertHandler()"
+          class="button-57 revertbtn"
+          role="button"
+          id="revert"
+        >
+          <span class="text"><i class="ri-arrow-go-forward-line"></i></span>
+          <span>Revert Req.</span>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      var textarea = document.querySelector("textarea");
+      var revert = document.querySelector("#revert");
+      var none = document.querySelector("#none");
+      // textarea.addEventListener("keyup", () => {
+      //   // alert("+eifiej");
+      //   data = textarea.value;
+      //   console.log(data);
+      //   if (data.length !== 0) {
+      //     none.style.cursor = "hover";
+      //     revert.style.pointerEvents = "visible";
+      //   } else {
+      //     none.style.cursor = "not-allowed";
+      //     revert.style.pointerEvents = "none";
+      //   }
+      // });
+
+      var currClaimId = null;
+      function setCurrClaimId(id) {
+        currClaimId = id;
+        console.log(currClaimId);
+        toggler();
+      }
+
+      function toggler() {
+        var maindiv = document.querySelector("#maindiv");
+        maindiv.classList.toggle("active");
+
+        var reasondiv = document.getElementById("reasondiv");
+        // var notifdiv = document.getElementById("notifdiv");
+        reasondiv.classList.toggle("active");
+      }
+
+      function revertHandler() {
+        var reason = document.querySelector("#reason").value;
+        if (reason.length > 1) {
+          fetch(`/insuranceDb_clm/revert/${currClaimId}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: reason,
+          })
+            .then((d) => {
+              return d.json();
+            })
+            .then((result) => {
+              console.log(result);
+              // document.querySelector("#detailsection").innerHTML = "";
+              // localStorage.removeItem("claimData");
+            });
+        }
+      }
+    </script>
+  </body>
+</html>
